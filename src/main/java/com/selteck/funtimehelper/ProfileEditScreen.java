@@ -4,6 +4,7 @@ import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.client.gui.widget.TextFieldWidget;
+import net.minecraft.client.input.KeyInput;
 import net.minecraft.text.Text;
 import org.lwjgl.glfw.GLFW;
 
@@ -38,7 +39,8 @@ public class ProfileEditScreen extends Screen {
         addDrawableChild(ButtonWidget.builder(Text.literal("Cancel"), b -> client.setScreen(parent)).dimensions(x + 115, y + 62, 105, 22).build());
     }
 
-    @Override public boolean keyPressed(int keyCode, int scanCode, int modifiers) {
+    @Override public boolean keyPressed(KeyInput input) {
+        int keyCode = input.key();
         if (waitingForKey) {
             if (keyCode == GLFW.GLFW_KEY_ESCAPE) {
                 waitingForKey = false;
@@ -54,7 +56,7 @@ public class ProfileEditScreen extends Screen {
             clearAndInit();
             return true;
         }
-        return super.keyPressed(keyCode, scanCode, modifiers);
+        return super.keyPressed(input);
     }
 
     @Override public void render(DrawContext c, int mx, int my, float d) {
