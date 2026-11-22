@@ -104,7 +104,8 @@ public final class InventoryLogic {
                 String fp = fingerprint(stack);
                 String now = fp + "#" + (stack.isEmpty() ? 0 : stack.getCount());
                 String old = previous.getOrDefault(slot, "");
-                boolean gained = !fp.isEmpty() && (old.isEmpty() || (old.startsWith(fp + "#") && count(old) < stack.getCount()));
+                boolean sameStackGrew = old.startsWith(fp + "#") && count(old) < stack.getCount();
+                boolean gained = !fp.isEmpty() && (old.isEmpty() || !old.startsWith(fp + "#") || sameStackGrew);
                 if (gained && enabled.contains(fp) && !pendingDrops.contains(slot)) {
                     client.interactionManager.clickSlot(player.playerScreenHandler.syncId, slot, 1, SlotActionType.THROW, player);
                     pendingDrops.add(slot);
