@@ -42,7 +42,7 @@ public class FilterScreen extends Screen {
     }
 
     @Override public void render(DrawContext c, int mx, int my, float d) {
-        renderBackground(c, mx, my, d);
+        c.fill(0, 0, width, height, 0xC0101010);
         c.drawCenteredTextWithShadow(textRenderer, title, width / 2, 18, 0xFFFFFF);
         c.drawCenteredTextWithShadow(textRenderer, Text.literal("Select the item in your main hand before adding it."), width / 2, 30, 0xAAAAAA);
         super.render(c, mx, my, d);

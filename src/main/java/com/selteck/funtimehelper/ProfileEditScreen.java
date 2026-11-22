@@ -60,10 +60,10 @@ public class ProfileEditScreen extends Screen {
     }
 
     @Override public void render(DrawContext c, int mx, int my, float d) {
-        renderBackground(c, mx, my, d);
+        c.fill(0, 0, width, height, 0xC0101010);
         c.drawCenteredTextWithShadow(textRenderer,
                 waitingForKey ? Text.literal("Press an unused key (ESC to cancel)") : title,
                 width / 2, height / 2 - 72, 0xFFFFFF);
-        super.render(c, mx, my, d);
+        super.render(c,mx,my,d);
     }
 }

@@ -20,6 +20,6 @@ public class ProfilesScreen extends Screen {
         addDrawableChild(ButtonWidget.builder(Text.literal("+ Create profile"), b -> { ProfileStore.SortProfile p=new ProfileStore.SortProfile("Profile " + (ProfileStore.PROFILES.size()+1)); ProfileStore.PROFILES.add(p); ProfileStore.save(); client.setScreen(new ProfileEditScreen(this,p)); }).dimensions(x, bottom, 145, 20).build());
         addDrawableChild(ButtonWidget.builder(Text.literal("Back"), b -> client.setScreen(parent)).dimensions(x+155, bottom, 145, 20).build());
     }
-    @Override public void render(DrawContext c,int mx,int my,float d) { renderBackground(c,mx,my,d); c.drawCenteredTextWithShadow(textRenderer,title,width/2,18,0xFFFFFF); super.render(c,mx,my,d); }
+    @Override public void render(DrawContext c,int mx,int my,float d) { c.fill(0, 0, width, height, 0xC0101010); c.drawCenteredTextWithShadow(textRenderer,title,width/2,18,0xFFFFFF); super.render(c,mx,my,d); }
     static String keyName(int code) { return code == -1 ? "UNBOUND" : GLFW.glfwGetKeyName(code,0) == null ? "KEY " + code : GLFW.glfwGetKeyName(code,0).toUpperCase(); }
 }
