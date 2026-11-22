@@ -6,6 +6,13 @@
   "description": "Client-side inventory organization and item filtering tools.",
   "authors": ["Selteck1"],
   "environment": "client",
-  "entrypoints": { "client": ["com.selteck.funtimehelper.FunTimeHelperClient"] },
-  "depends": { "fabricloader": ">=0.16.0", "minecraft": "1.21.4", "java": ">=21", "fabric-api": "*" }
+  "entrypoints": {
+    "client": ["com.selteck.funtimehelper.FunTimeHelperClient"]
+  },
+  "depends": {
+    "fabricloader": ">=0.18.1",
+    "minecraft": "1.21.11",
+    "java": ">=21",
+    "fabric-api": "*"
+  }
 }
