@@ -8,11 +8,15 @@ import net.minecraft.text.Text;
 public class MainMenuScreen extends Screen {
     public MainMenuScreen() { super(Text.literal("FunTimeHelper")); }
     @Override protected void init() {
-        int w = 220, x = (width - w) / 2, y = height / 2 - 35;
-        addDrawableChild(ButtonWidget.builder(Text.literal("Inventory Organizer"), b -> client.setScreen(new InfoScreen("Inventory Organizer", "Profile editor is being implemented."))).dimensions(x, y, w, 22).build());
-        addDrawableChild(ButtonWidget.builder(Text.literal("Smart Item Filter"), b -> client.setScreen(new InfoScreen("Smart Item Filter", "Item and enchantment filters are being implemented."))).dimensions(x, y + 28, w, 22).build());
+        int w = 240, x = (width - w) / 2, y = height / 2 - 35;
+        addDrawableChild(ButtonWidget.builder(Text.literal("Inventory Organizer"), b -> client.setScreen(new OrganizerScreen(this))).dimensions(x, y, w, 22).build());
+        addDrawableChild(ButtonWidget.builder(Text.literal("Smart Item Filter"), b -> client.setScreen(new FilterScreen(this))).dimensions(x, y + 28, w, 22).build());
         addDrawableChild(ButtonWidget.builder(Text.literal("Manage Profiles (O)"), b -> client.setScreen(new ProfilesScreen(this))).dimensions(x, y + 56, w, 22).build());
         addDrawableChild(ButtonWidget.builder(Text.literal("Close"), b -> close()).dimensions(x, y + 84, w, 22).build());
     }
-    @Override public void render(DrawContext context, int mouseX, int mouseY, float delta) { renderBackground(context, mouseX, mouseY, delta); context.drawCenteredTextWithShadow(textRenderer, title, width/2, height/2 - 82, 0xFFFFFF); super.render(context, mouseX, mouseY, delta); }
+    @Override public void render(DrawContext context, int mouseX, int mouseY, float delta) {
+        renderBackground(context, mouseX, mouseY, delta);
+        context.drawCenteredTextWithShadow(textRenderer, title, width / 2, height / 2 - 82, 0xFFFFFF);
+        super.render(context, mouseX, mouseY, delta);
+    }
 }
